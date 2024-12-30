@@ -1,4 +1,4 @@
-from game_logic import *
+from derivative_logic import *
 
 derivative = Derivative()
 
