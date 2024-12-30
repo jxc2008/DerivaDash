@@ -1,6 +1,6 @@
+from integral_logic import *
 
-from derivative_logic import *
+game = Integral()
 
-derivative = Derivative()
+game.run_game()
 
-derivative.chain()
