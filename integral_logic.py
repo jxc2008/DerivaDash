@@ -118,13 +118,13 @@ class Integral:
         else:
             try:
                 user_answer = float(user_input)
-                correct_numeric = float(correct_answer)
+                correct_numeric = float(correct_answer.evalf())
                 if abs(user_answer - correct_numeric) < 1e-2:
                     print("Good job! Your answer is correct.")
                 else:
                     print(f"Incorrect. The correct answer is approximately {correct_numeric:.2f}.")
             except ValueError:
-                print(f"Invalid input. The correct answer is approximately {correct_answer:.2f}.")
+                print(f"Invalid input. The correct answer is approximately {float(correct_answer.evalf()):.2f}.")
                 
     def generate_uSub_function(self):
         a = random.randint(-10, 10)
@@ -173,10 +173,8 @@ class Integral:
         self.execute_function(self.generate_uSub_function, "uSub")
     
     def generate_ibp_function(self):
-        a = random.randint(-10, 10)
-        while a == 0:
-            a = random.randint(-10, 10)
-        b = random.randint(-10, 10)
+        a = random.randint(1, 10)
+        b = random.randint(1, 10)
         
         self.trig_functions = ['sin(x)', 'cos(x)', 'tan(x)', 'sec(x)', 'csc(x)', 'cot(x)'] 
         self.inv_trig_functions = ['asin(x)', 'acos(x)', 'atan(x)', 'asec(x)', 'acsc(x)', 'acot(x)']  
