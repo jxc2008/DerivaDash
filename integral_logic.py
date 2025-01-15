@@ -16,7 +16,7 @@ class Integral:
         question = f"What's the integral of {constant}, from x = {a_bound} to x = {b_bound}?"
         correct_answer = str(constant * (b_bound - a_bound))
         
-        print(question)
+        print(f"[CONSTANT FUNCTION] {question}")
         
         while True:
             answer = input("Your answer: ").strip()
@@ -118,13 +118,13 @@ class Integral:
         else:
             try:
                 user_answer = float(user_input)
-                correct_numeric = float(correct_answer)
+                correct_numeric = float(correct_answer.evalf())
                 if abs(user_answer - correct_numeric) < 1e-2:
                     print("Good job! Your answer is correct.")
                 else:
                     print(f"Incorrect. The correct answer is approximately {correct_numeric:.2f}.")
             except ValueError:
-                print(f"Invalid input. The correct answer is approximately {correct_answer:.2f}.")
+                print(f"Invalid input. The correct answer is approximately {float(correct_answer.evalf()):.2f}.")
                 
     def generate_uSub_function(self):
         a = random.randint(-10, 10)
@@ -170,58 +170,39 @@ class Integral:
         return func, func_str
     
     def uSub_function(self):
+        self.execute_function(self.generate_uSub_function, "uSub")
+    
+    def generate_ibp_function(self):
+        a = random.randint(1, 10)
+        b = random.randint(1, 10)
         
-        integrand, integrand_str = self.generate_uSub_function()
+        self.trig_functions = ['sin(x)', 'cos(x)', 'tan(x)', 'sec(x)', 'csc(x)', 'cot(x)'] 
+        self.inv_trig_functions = ['asin(x)', 'acos(x)', 'atan(x)', 'asec(x)', 'acsc(x)', 'acot(x)']  
+        self.poly_functions = ['x', 'x**2', 'x**3']
         
-        problem_type = random.choice(['indefinite', 'definite'])
-        if problem_type == "indefinite":
-            integral = sp.integrate(integrand, self.x)
-            question = f"Find the indefinite integral of {integrand_str} with respect to x."
-            correct_answer = integral
-        else:
-            valid_bounds = False
-            while not valid_bounds:
-                a_bound = random.randint(-10, 10)
-                b_bound = random.randint(-10, 15)
-                while b_bound <= a_bound:
-                    b_bound = random.randint(-10, 15)
-                try:
-                    integral = sp.integrate(integrand, (self.x, a_bound, b_bound))
-                    if not integral.has(sp.I):
-                        valid_bounds = True
-                except Exception:
-                    valid_bounds = False
-                    
-            integral = sp.integrate(integrand, (self.x, a_bound, b_bound))
-            question = f"Calculate the integral of {integrand_str} from x = {a_bound} to x = {b_bound}."
-            correct_answer = integral.evalf()
-            
-            print("\n" + question)
-            
-            user_input = input("Your answer: ").strip()
-            
-            if problem_type == 'indefinite':
-                try:
-                    user_expr = sp.sympify(user_input)
-                    derivative = sp.diff(user_expr, self.x)
-                    difference = sp.simplify(derivative - func)
-                    if difference == 0:
-                        print("Good job! Your answer is correct.")
-                    else:
-                        print(f"Incorrect. The correct answer is {integral} + C.")
-                except (sp.SympifyError, TypeError):
-                    print(f"Invalid input. The correct answer is {integral} + C.")
-            else:
-                try:
-                    user_answer = float(user_input)
-                    correct_numeric = float(correct_answer)
-                    if abs(user_answer - correct_numeric) < 1e-2:
-                        print("Good job! Your answer is correct.")
-                    else:
-                        print(f"Incorrect. The correct answer is approximately {correct_numeric:.2f}.")
-                except ValueError:
-                    print(f"Invalid input. The correct answer is approximately {correct_answer:.2f}.")
+        self.trig_function = random.choice(self.trig_functions)
+        self.inv_trig_function = random.choice(self.inv_trig_functions)
+        self.poly_function = random.choice(self.poly_functions)
+        
+        self.ibp_problems = {
+            "Poly × Exp": f"{a} * {self.poly_function} * exp({b} * x)",
+            "Poly × Log": f"{a} * {self.poly_function} * log({b} * x)",
+            "Poly × Trig": f"{a} * {self.poly_function} * {self.trig_function}",
+            "Exp × Trig": f"{a} * exp({b} * x) * {self.trig_function}",
+            "Log Alone": f"{a} * log({b} * x)",
+            "Inverse Trig × Poly": f"{a} * {self.inv_trig_function} * {self.poly_function}"
+        }
+        
+        problem_type = random.choice(list(self.ibp_problems.keys()))
+        func = self.ibp_problems[problem_type]
+        expression = sp.sympify(func)
+        func_str = str(expression)
+        
+        return func, func_str
 
+    def ibp_function(self):
+        self.execute_function(self.generate_ibp_function, "ibp")
+        
     def run_game(self):
         print("Welcome to DerivaDash - Mental Math for Integrals!")
         
@@ -231,10 +212,11 @@ class Integral:
             print("2. Solve a linear integral problem")
             print("3. Solve a quadratic integral problem")
             print("4. Solve a cubic integral problem")
-            print("5. Solve a u-sub integral problem")
-            print("6. Exit the game")
+            print("5. Solve a u-substitution integral problem")
+            print("6. Solve an integration by parts integral problem")
+            print("7. Exit the game")
             
-            choice = input("Enter your choice (1/2/3/4/5/6): ").strip()
+            choice = input("Enter your choice (1/2/3/4/5/6/7): ").strip()
             
             if choice == '1':
                 self.constant_integral()
@@ -247,10 +229,12 @@ class Integral:
             elif choice == '5':
                 self.uSub_function()
             elif choice == '6':
+                self.ibp_function()
+            elif choice == '7':
                 print("Thanks for playing DerivaDash! Goodbye!")
                 break
             else:
-                print("Invalid choice. Please choose 1, 2, 3, 4, 5, or 6.")
+                print("Invalid choice. Please choose 1, 2, 3, 4, 5, 6, or 7.")
                 continue
             
             continue_choice = input("\nDo you want to solve another problem? (yes/no): ").strip().lower()
