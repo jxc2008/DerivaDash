@@ -83,47 +83,37 @@ class Integral:
             "result": str(result) + " + C"
         }
 
-    def run_integral(self):
-        print("Welcome to DerivaDash - Mental Math for Integrals!")
+    
+    def random_integral(self, selected_rules, user_input=None, correct_answer=None):
+        """
+        Generate random integral problems based on selected rules.
+        - selected_rules: List of selected rules (e.g., ["constant", "linear"]).
+        - user_input: User's last input.
+        - correct_answer: The correct answer for the previous problem (optional).
+        """
+        # Check the user's last input (if provided)
+        if user_input is not None and correct_answer is not None:
+            if str(user_input) != str(correct_answer):
+                return {"status": "incorrect", "message": "Try again!", "correct_answer": correct_answer}
 
-        while True:
-            print("\nChoose a challenge:")
-            print("1. Solve a constant integral problem")
-            print("2. Solve a linear integral problem")
-            print("3. Solve a quadratic integral problem")
-            print("4. Solve a cubic integral problem")
-            print("5. Solve a u-substitution integral problem")
-            print("6. Solve an integration by parts problem")
-            print("7. Exit the game")
+        # Randomly select a rule from the user's choices
+        rule = random.choice(selected_rules)
 
-            choice = input("Enter your choice (1/2/3/4/5/6/7): ").strip()
+        # Generate a random integral problem based on the selected rule
+        if rule == "constant":
+            problem = self.constant_integral()
+        elif rule == "linear":
+            problem = self.linear_integral()
+        elif rule == "quadratic":
+            problem = self.quadratic_integral()
+        elif rule == "cubic":
+            problem = self.cubic_integral()
+        elif rule == "u_substitution":
+            problem = self.u_substitution_integral()
+        elif rule == "integration_by_parts":
+            problem = self.integration_by_parts()
+        else:
+            raise ValueError("Invalid rule selected.")
 
-            if choice == '1':
-                print(self.constant_integral())
-
-            elif choice == '2':
-                print(self.linear_integral())
-
-            elif choice == '3':
-                print(self.quadratic_integral())
-
-            elif choice == '4':
-                print(self.cubic_integral())
-
-            elif choice == '5':
-                print(self.u_substitution_integral())
-
-            elif choice == '6':
-                print(self.integration_by_parts())
-
-            elif choice == '7':
-                print("Thanks for playing DerivaDash! Goodbye!")
-                break
-
-            else:
-                print("Invalid choice. Please input 1, 2, 3, 4, 5, 6, or 7.")
-
-            continue_choice = input("\nDo you want to solve another problem? (yes/no): ").strip().lower()
-            if continue_choice not in ['yes', 'y']:
-                print("Thanks for playing DerivaDash! Goodbye!")
-                break
+        # Return the new problem
+        return {"status": "new_problem", "problem": problem}
