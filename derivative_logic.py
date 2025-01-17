@@ -2,131 +2,88 @@ import math
 import random
 import sympy as sp
 from sympy import symbols, diff
+import anvil.server  # Import the Anvil server library
 
 class Derivative:
     def __init__(self):
-        self.constantOne = None
-        self.constantTwo = None
-        self.coeffOne = None
-        self.coeffTwo = None
-        self.exponentOne = None
-        self.exponentTwo = None
-        self.location = None
         self.x = sp.symbols('x')
 
-    def constantFunc(self):
+    @anvil.server.callable
+    def constant_derivative(self):
+        """Return the derivative of a constant function."""
+        constant = random.randint(1, 134)
+        func = constant
+        derivative = 0
+        return {"function": str(func), "derivative": str(derivative)}
 
-        constantOne = random.randint(1,134)
+    @anvil.server.callable
+    def power_rule_derivative(self, coeff=None, exponent=None):
+        """Return the derivative of a power function."""
+        coeff = coeff or random.randint(-5, 5)
+        exponent = exponent or random.randint(1, 5)
+        func = coeff * self.x**exponent
+        derivative = diff(func, self.x)
+        return {"function": str(func), "derivative": str(derivative)}
 
-        func = constantOne
-        func_str = f"{constantOne}"
-        return func, func_str
-    
-    def powerFunc(self):
+    @anvil.server.callable
+    def product_rule_derivative(self):
+        """Return the derivative of a product of two functions."""
+        coeff1 = random.randint(-5, 5)
+        coeff2 = random.randint(-5, 5)
+        exp1 = random.randint(1, 3)
+        exp2 = random.randint(1, 3)
+        func = (coeff1 * self.x**exp1) * (coeff2 * self.x**exp2)
+        derivative = diff(func, self.x)
+        return {"function": str(func), "derivative": str(derivative)}
 
-        coeffOne = random.randint(-5,5)
-        exponentOne = random.randint(1,5)
+    @anvil.server.callable
+    def quotient_rule_derivative(self):
+        """Return the derivative of a quotient of two functions."""
+        coeff1 = random.randint(-5, 5)
+        coeff2 = random.randint(-5, 5)
+        exp1 = random.randint(1, 3)
+        exp2 = random.randint(1, 3)
+        numerator = coeff1 * self.x**exp1
+        denominator = coeff2 * self.x**exp2
+        func = numerator / denominator
+        derivative = diff(func, self.x)
+        return {"function": str(func), "derivative": str(derivative)}
 
-        func = coeffOne * self.x ** exponentOne
-        func_str = f"{func}"
-        return func, func_str
+    @anvil.server.callable
+    def chain_rule_derivative(self):
+        """Return the derivative of a composite function."""
+        coeff1 = random.randint(-5, 5)
+        coeff2 = random.randint(-5, 5)
+        constant = random.randint(-5, 5)
+        exp_inner = random.randint(1, 3)
+        exp_outer = random.randint(1, 3)
+        inner_func = coeff1 * self.x**exp_inner + coeff2 * self.x + constant
+        func = (inner_func)**exp_outer
+        derivative = diff(func, self.x)
+        return {"function": str(func), "derivative": str(derivative)}
 
-    def productFunc(self):
+    @anvil.server.callable
+    def run_const(self):
+        return self.constant_derivative()
 
-        constantOne = random.randint(-5,5)
-        constantTwo = random.randint(-5,5)
-        coeffOne = random.randint(-5,5)
-        coeffTwo = random.randint(-5,5)
-        exponentOne = random.randint(1,3)
-        exponentTwo = random.randint(1,3)
+    @anvil.server.callable
+    def run_power(self):
+        return self.power_rule_derivative()
 
-        func = (coeffOne * self.x ** exponentOne) * (coeffTwo * self.x ** exponentTwo)
-        func_str = f"{func}"
-        return func, func_str
+    @anvil.server.callable
+    def run_product(self):
+        return self.product_rule_derivative()
 
-    def quotientFunc(self):
+    @anvil.server.callable
+    def run_quotient(self):
+        return self.quotient_rule_derivative()
 
-        constantOne = random.randint(-5,5)
-        constantTwo = random.randint(-5,5)
-        coeffOne = random.randint(-5,5)
-        coeffTwo = random.randint(-5,5)
-        exponentOne = random.randint(1,3)
-        exponentTwo = random.randint(1,3)
+    @anvil.server.callable
+    def run_chain(self):
+        return self.chain_rule_derivative()
 
-        func = (coeffOne * self.x ** exponentOne) / (coeffTwo * self.x ** exponentTwo)
-        func_str = f"{func}"
-        return func, func_str
-    
-    def chainFunc(self):
-
-        constantOne = random.randint(-5,5)
-        constantTwo = random.randint(-5,5)
-        coeffOne = random.randint(-5,5)
-        coeffTwo = random.randint(-5,5)
-        exponentOne = random.randint(1,3)
-        exponentTwo = random.randint(1,3)
-
-        func = (constantOne * (coeffOne * self.x**exponentOne + coeffTwo * self.x + constantTwo)**exponentTwo)
-        func_str = f"{func}"
-        return func, func_str
-    
-    def runConst(self):
-        self.execute_function(self.constantFunc, "linear")
-
-    def runPower(self):
-        self.execute_function(self.powerFunc, "quadratic")
-
-    def runProduct(self):
-        self.execute_function(self.productFunc, "quadratic")
-
-    def runQuot(self):
-        self.exectute_function(self.quotientFunc, "quadratic")
-
-    def runChain(self):
-        self.execute_function(self.chainFunc, "quadratic")
- 
-    def execute_function(self, generate_func, func_type):
-    
-        func, func_str = generate_func()
-
-        problem_type = random.choice(['indefinite', 'definite'])
-
-        if problem_type == 'indefinite':
-            derivative = sp.diff(func, self.x)
-            question = f"What's the derivative of {func_str}?"
-            answer = derivative
-        else:
-            location = random.randint(0,5)   
-            derivative = sp.diff(func, self.x)
-            question = f"What's the derivative of {func_str}"
-            answer = derivative.evalf()
-    
-        print(f"\n[{func_type.upper()} FUNCTION] {question}")
-
-        user_input = input("Your answer: ").strip()
-
-        if problem_type == 'indefinite':
-            try:
-                user_simp= sp.sympify(user_input)
-                difference = sp.simplify(user_simp - func)
-                if difference == 0:
-                    print("Good job! Your answer is correct.")
-                else:
-                    print(f"Incorrect. The correct answer is {derivative}")
-            except (sp.SympifyError, TypeError):
-                print(f"Invalid input. The correct answer is {derivative}")
-        else:
-            try:
-                user_ans = user_input
-                correct_numeric = float(answer)
-                if abs(user_ans - correct_numeric) < 1e-2:
-                    print("Good job! Your answer is correct.")
-                else:
-                    print(f"Incorrect. The correct answer is approximately {correct_numeric:.2f}.")
-            except ValueError:
-                print(f"Invalid input. The correct answer is approximately {answer:.2f}.")
-                
-    def runGame(self):
+    @anvil.server.callable
+    def run_game(self):
         print("Welcome to DerivaDash - Mental Math for Derivatives!")
 
         while True:
@@ -140,31 +97,29 @@ class Derivative:
 
             choice = input("Enter your choice (1/2/3/4/5/6): ").strip()
 
-            if choice == 1:
-                self.runConst
+            if choice == '1':
+                print(self.run_const())
 
-            elif choice == 2:
-                self.runPower
+            elif choice == '2':
+                print(self.run_power())
 
-            elif choice == 3:
-                self.runProduct
+            elif choice == '3':
+                print(self.run_product())
 
-            elif choice == 4:
-                self.runQuot
-            
-            elif choice == 5:
-                self.runChain
-            
+            elif choice == '4':
+                print(self.run_quotient())
+
+            elif choice == '5':
+                print(self.run_chain())
+
+            elif choice == '6':
+                print("Thanks for playing DerivaDash! Goodbye!")
+                break
+
             else:
-                print("Invalid choice. Please input either 1,2,3,4,5 or 6.")
-                continue
-           
+                print("Invalid choice. Please input 1, 2, 3, 4, 5, or 6.")
+
             continue_choice = input("\nDo you want to solve another problem? (yes/no): ").strip().lower()
             if continue_choice not in ['yes', 'y']:
                 print("Thanks for playing DerivaDash! Goodbye!")
                 break
-            
-
-
-
-
