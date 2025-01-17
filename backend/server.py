@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from derivative_logic import Derivative
 from integral_logic import Integral
+import random
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -17,8 +18,8 @@ def random_problem():
     correct_answer = data.get('correct_answer')
 
     # Separate derivative and integral rules
-    derivative_rules = [rule for rule in selected_rules if "rule" in rule]
-    integral_rules = [rule for rule in selected_rules if "function" in rule]
+    derivative_rules = [rule for rule in selected_rules if rule in ["constant", "power", "product", "quotient", "chain"]]
+    integral_rules = [rule for rule in selected_rules if rule in ["constant", "linear", "quadratic", "cubic", "u_substitution", "integration_by_parts"]]
 
     # Randomly choose between derivative and integral (if both are selected)
     if derivative_rules and integral_rules:
