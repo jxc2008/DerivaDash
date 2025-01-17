@@ -2,13 +2,11 @@ import math
 import random
 import sympy as sp
 from sympy import symbols, diff
-import anvil.server  # Import the Anvil server library
 
 class Derivative:
     def __init__(self):
         self.x = sp.symbols('x')
 
-    @anvil.server.callable
     def constant_derivative(self):
         """Return the derivative of a constant function."""
         constant = random.randint(1, 134)
@@ -16,7 +14,6 @@ class Derivative:
         derivative = 0
         return {"function": str(func), "derivative": str(derivative)}
 
-    @anvil.server.callable
     def power_rule_derivative(self, coeff=None, exponent=None):
         """Return the derivative of a power function."""
         coeff = coeff or random.randint(-5, 5)
@@ -25,7 +22,6 @@ class Derivative:
         derivative = diff(func, self.x)
         return {"function": str(func), "derivative": str(derivative)}
 
-    @anvil.server.callable
     def product_rule_derivative(self):
         """Return the derivative of a product of two functions."""
         coeff1 = random.randint(-5, 5)
@@ -36,7 +32,6 @@ class Derivative:
         derivative = diff(func, self.x)
         return {"function": str(func), "derivative": str(derivative)}
 
-    @anvil.server.callable
     def quotient_rule_derivative(self):
         """Return the derivative of a quotient of two functions."""
         coeff1 = random.randint(-5, 5)
@@ -49,7 +44,6 @@ class Derivative:
         derivative = diff(func, self.x)
         return {"function": str(func), "derivative": str(derivative)}
 
-    @anvil.server.callable
     def chain_rule_derivative(self):
         """Return the derivative of a composite function."""
         coeff1 = random.randint(-5, 5)
@@ -62,64 +56,34 @@ class Derivative:
         derivative = diff(func, self.x)
         return {"function": str(func), "derivative": str(derivative)}
 
-    @anvil.server.callable
-    def run_const(self):
-        return self.constant_derivative()
+    def random_derivative(self, selected_rules, user_input=None, correct_answer=None):
+        """
+        Generate random derivative problems based on selected rules.
+        - selected_rules: List of selected rules (e.g., ["power", "chain"]).
+        - user_input: User's last input.
+        - correct_answer: The correct answer for the previous problem (optional).
+        """
+        # Check the user's last input (if provided)
+        if user_input is not None and correct_answer is not None:
+            if str(user_input) != str(correct_answer):
+                return {"status": "incorrect", "message": "Try again!", "correct_answer": correct_answer}
 
-    @anvil.server.callable
-    def run_power(self):
-        return self.power_rule_derivative()
+        # Randomly select a rule from the user's choices
+        rule = random.choice(selected_rules)
 
-    @anvil.server.callable
-    def run_product(self):
-        return self.product_rule_derivative()
+        # Generate a random function based on the selected rule
+        if rule == "power":
+            problem = self.power_rule_derivative()
+        elif rule == "chain":
+            problem = self.chain_rule_derivative()
+        elif rule == "product":
+            problem = self.product_rule_derivative()
+        elif rule == "quotient":
+            problem = self.quotient_rule_derivative()
+        elif rule == "constant":
+            problem = self.constant_derivative()
+        else:
+            raise ValueError("Invalid rule selected.")
 
-    @anvil.server.callable
-    def run_quotient(self):
-        return self.quotient_rule_derivative()
-
-    @anvil.server.callable
-    def run_chain(self):
-        return self.chain_rule_derivative()
-
-    @anvil.server.callable
-    def run_game(self):
-        print("Welcome to DerivaDash - Mental Math for Derivatives!")
-
-        while True:
-            print("\nChoose a challenge:")
-            print("1. Solve a constant derivative problem")
-            print("2. Solve a derivative problem using power rule")
-            print("3. Solve a derivative problem using product rule")
-            print("4. Solve a derivative problem using quotient rule")
-            print("5. Solve a derivative problem using chain rule")
-            print("6. Exit the game")
-
-            choice = input("Enter your choice (1/2/3/4/5/6): ").strip()
-
-            if choice == '1':
-                print(self.run_const())
-
-            elif choice == '2':
-                print(self.run_power())
-
-            elif choice == '3':
-                print(self.run_product())
-
-            elif choice == '4':
-                print(self.run_quotient())
-
-            elif choice == '5':
-                print(self.run_chain())
-
-            elif choice == '6':
-                print("Thanks for playing DerivaDash! Goodbye!")
-                break
-
-            else:
-                print("Invalid choice. Please input 1, 2, 3, 4, 5, or 6.")
-
-            continue_choice = input("\nDo you want to solve another problem? (yes/no): ").strip().lower()
-            if continue_choice not in ['yes', 'y']:
-                print("Thanks for playing DerivaDash! Goodbye!")
-                break
+        # Return the new problem
+        return {"status": "new_problem", "problem": problem}

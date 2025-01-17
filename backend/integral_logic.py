@@ -1,12 +1,10 @@
 import random
 import sympy as sp
-import anvil.server
 
 class Integral:
     def __init__(self):
         self.x = sp.symbols('x')
 
-    @anvil.server.callable
     def constant_integral(self):
         """Calculate the definite integral of a constant."""
         constant = random.randint(1, 10)
@@ -18,7 +16,6 @@ class Integral:
             "result": result
         }
 
-    @anvil.server.callable
     def linear_integral(self):
         """Calculate the integral of a linear function."""
         a = random.randint(-10, 10)
@@ -32,7 +29,6 @@ class Integral:
             "result": float(result)
         }
 
-    @anvil.server.callable
     def quadratic_integral(self):
         """Calculate the integral of a quadratic function."""
         a = random.randint(-10, 10)
@@ -47,7 +43,6 @@ class Integral:
             "result": float(result)
         }
 
-    @anvil.server.callable
     def cubic_integral(self):
         """Calculate the integral of a cubic function."""
         a = random.randint(-10, 10)
@@ -63,7 +58,6 @@ class Integral:
             "result": float(result)
         }
 
-    @anvil.server.callable
     def u_substitution_integral(self):
         """Calculate the integral using u-substitution."""
         a = random.randint(-10, 10)
@@ -77,7 +71,6 @@ class Integral:
             "result": str(integral) + " + C"
         }
 
-    @anvil.server.callable
     def integration_by_parts(self):
         """Calculate the integral using integration by parts."""
         u = self.x**2
@@ -90,8 +83,7 @@ class Integral:
             "result": str(result) + " + C"
         }
 
-    @anvil.server.callable
-    def run_game(self):
+    def run_integral(self):
         print("Welcome to DerivaDash - Mental Math for Integrals!")
 
         while True:
