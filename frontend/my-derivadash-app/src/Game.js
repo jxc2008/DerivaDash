@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import './Game.css'; // Assuming you have a CSS file for styling
+import { useLocation, Link } from 'react-router-dom';
+import './Game.css';
 
-function Game({ selectedRules, timeLimit, onEndGame }) {
+function Game() {
+  const location = useLocation();
+  const { selectedRules, timeLimit } = location.state || { selectedRules: [], timeLimit: 60 };
   const [problem, setProblem] = useState(null);
   const [userInput, setUserInput] = useState('');
   const [output, setOutput] = useState('');
   const [timeLeft, setTimeLeft] = useState(timeLimit);
   const [isRunning, setIsRunning] = useState(true);
+  const [score, setScore] = useState(0);
   const timerRef = useRef(null);
 
   useEffect(() => {
@@ -28,7 +32,7 @@ function Game({ selectedRules, timeLimit, onEndGame }) {
         if (prev <= 1) {
           clearInterval(timerRef.current);
           setIsRunning(false);
-          onEndGame("Time's up! Practice session ended.");
+          alert(`Time's up! Your final score is ${score}.`);
           return 0;
         }
         return prev - 1;
@@ -62,6 +66,7 @@ function Game({ selectedRules, timeLimit, onEndGame }) {
       if (result.status === "incorrect") {
         setOutput(`Incorrect! ${result.message}`);
       } else {
+        setScore(prevScore => prevScore + 1);
         setOutput("Correct! New problem incoming...");
         setUserInput('');
         if (isRunning) {
@@ -76,18 +81,22 @@ function Game({ selectedRules, timeLimit, onEndGame }) {
 
   return (
     <div className="game-container">
-      <h2>Game On!</h2>
-      <div id="output">{output}</div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={userInput}
-          onChange={handleInputChange}
-          placeholder="Enter your answer"
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <div id="time-display">Time Left: {timeLeft}s</div>
+      <div className="score-display">Score: {score}</div>
+      <div className="problem-box">
+        <Link to="/" className="back-button">Back to Home</Link>
+        <h2>Game On!</h2>
+        <div id="output">{output}</div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={userInput}
+            onChange={handleInputChange}
+            placeholder="Enter your answer"
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <div id="time-display">Time Left: {timeLeft}s</div>
+      </div>
     </div>
   );
 }
