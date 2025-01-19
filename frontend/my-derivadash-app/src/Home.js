@@ -1,28 +1,15 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './App.css';
-import './Home.css';
+import React, { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
+import "./App.css"
+import "./Home.css"
 
 function Home() {
-  const navigate = useNavigate();
-  const derivativeRules = [
-    'constant',
-    'power',
-    'product',
-    'quotient',
-    'chain',
-  ];
-  const integralRules = [
-    'integer',
-    'linear',
-    'quadratic',
-    'cubic',
-    'u_substitution',
-    'integration_by_parts',
-  ];
+  const navigate = useNavigate()
+  const derivativeRules = ["constant", "power", "product", "quotient", "chain"]
+  const integralRules = ["integer", "linear", "quadratic", "cubic", "u_substitution", "integration_by_parts"]
 
-  const [derivativesChecked, setDerivativesChecked] = useState(true);
-  const [integralsChecked, setIntegralsChecked] = useState(false);
+  const [derivativesChecked, setDerivativesChecked] = useState(true)
+  const [integralsChecked, setIntegralsChecked] = useState(false)
   const [selectedRules, setSelectedRules] = useState({
     derivatives: {
       constant: false,
@@ -39,84 +26,80 @@ function Home() {
       u_substitution: false,
       integration_by_parts: false,
     },
-  });
-  const [timeLimit, setTimeLimit] = useState(60);
+  })
+  const [timeLimit, setTimeLimit] = useState(60)
 
   const handleCheckboxChange = (e, category) => {
-    const { id, checked } = e.target;
-    setSelectedRules(prev => ({
+    const { id, checked } = e.target
+    setSelectedRules((prev) => ({
       ...prev,
       [category]: {
         ...prev[category],
-        [id]: checked
-      }
-    }));
-  };
+        [id]: checked,
+      },
+    }))
+  }
 
   const handleDerivativesChange = (e) => {
-    setDerivativesChecked(e.target.checked);
+    setDerivativesChecked(e.target.checked)
     if (!e.target.checked) {
-      setSelectedRules(prev => ({
+      setSelectedRules((prev) => ({
         ...prev,
-        derivatives: Object.fromEntries(Object.keys(prev.derivatives).map(key => [key, false]))
-      }));
+        derivatives: Object.fromEntries(Object.keys(prev.derivatives).map((key) => [key, false])),
+      }))
     }
-  };
+  }
 
   const handleIntegralsChange = (e) => {
-    setIntegralsChecked(e.target.checked);
+    setIntegralsChecked(e.target.checked)
     if (!e.target.checked) {
-      setSelectedRules(prev => ({
+      setSelectedRules((prev) => ({
         ...prev,
-        integrals: Object.fromEntries(Object.keys(prev.integrals).map(key => [key, false]))
-      }));
+        integrals: Object.fromEntries(Object.keys(prev.integrals).map((key) => [key, false])),
+      }))
     }
-  };
+  }
 
   const handleTimeLimitChange = (e) => {
-    setTimeLimit(parseInt(e.target.value));
-  };
+    setTimeLimit(Number.parseInt(e.target.value))
+  }
 
   const startGame = () => {
     const selected = [
-      ...Object.keys(selectedRules.derivatives).filter(rule => selectedRules.derivatives[rule]),
-      ...Object.keys(selectedRules.integrals).filter(rule => selectedRules.integrals[rule])
-    ];
+      ...Object.keys(selectedRules.derivatives).filter((rule) => selectedRules.derivatives[rule]),
+      ...Object.keys(selectedRules.integrals).filter((rule) => selectedRules.integrals[rule]),
+    ]
     if (selected.length === 0) {
-      alert("Please select at least one rule to practice.");
-      return;
+      alert("Please select at least one rule to practice.")
+      return
     }
-    navigate('/game', { state: { selectedRules: selected, timeLimit } });
-  };
+    navigate("/game", { state: { selectedRules: selected, timeLimit } })
+  }
 
   return (
     <div className="home-container">
       <p className="description">
-        Master calculus through quick-fire practice! Solve derivatives and integrals against the clock to build speed and confidence.
+        Master calculus through quick-fire practice! Solve derivatives and integrals against the clock to build speed
+        and confidence.
       </p>
 
       <div className="options-container">
         <div className="option-group">
           <div className="option-header">
-            <input 
-              type="checkbox" 
-              id="derivatives" 
-              checked={derivativesChecked}
-              onChange={handleDerivativesChange}
-            />
+            <input type="checkbox" id="derivatives" checked={derivativesChecked} onChange={handleDerivativesChange} />
             <label htmlFor="derivatives">Derivatives</label>
           </div>
           <div className="checkbox-group">
-            {Object.keys(selectedRules.derivatives).map(rule => (
+            {Object.keys(selectedRules.derivatives).map((rule) => (
               <div key={rule} className="checkbox-item">
                 <input
                   type="checkbox"
                   id={rule}
                   checked={selectedRules.derivatives[rule]}
-                  onChange={(e) => handleCheckboxChange(e, 'derivatives')}
+                  onChange={(e) => handleCheckboxChange(e, "derivatives")}
                   disabled={!derivativesChecked}
                 />
-                <label htmlFor={rule}>{rule.replace('_', ' ')}</label>
+                <label htmlFor={rule}>{rule.replace("_", " ")}</label>
               </div>
             ))}
           </div>
@@ -124,25 +107,20 @@ function Home() {
 
         <div className="option-group">
           <div className="option-header">
-            <input 
-              type="checkbox" 
-              id="integrals" 
-              checked={integralsChecked}
-              onChange={handleIntegralsChange}
-            />
+            <input type="checkbox" id="integrals" checked={integralsChecked} onChange={handleIntegralsChange} />
             <label htmlFor="integrals">Integrals</label>
           </div>
           <div className="checkbox-group">
-            {Object.keys(selectedRules.integrals).map(rule => (
+            {Object.keys(selectedRules.integrals).map((rule) => (
               <div key={rule} className="checkbox-item">
                 <input
                   type="checkbox"
                   id={rule}
                   checked={selectedRules.integrals[rule]}
-                  onChange={(e) => handleCheckboxChange(e, 'integrals')}
+                  onChange={(e) => handleCheckboxChange(e, "integrals")}
                   disabled={!integralsChecked}
                 />
-                <label htmlFor={rule}>{rule.replace('_', ' ')}</label>
+                <label htmlFor={rule}>{rule.replace("_", " ")}</label>
               </div>
             ))}
           </div>
@@ -150,11 +128,7 @@ function Home() {
       </div>
 
       <div className="controls">
-        <select
-          id="time-limit"
-          value={timeLimit}
-          onChange={handleTimeLimitChange}
-        >
+        <select id="time-limit" value={timeLimit} onChange={handleTimeLimitChange}>
           <option value="60">60 seconds</option>
           <option value="120">120 seconds</option>
           <option value="180">180 seconds</option>
@@ -164,9 +138,15 @@ function Home() {
           Start Game
         </button>
       </div>
+
+      <div className="about-link-container">
+        <Link to="/about" className="about-link">
+          About DerivaDash
+        </Link>
+      </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
 
