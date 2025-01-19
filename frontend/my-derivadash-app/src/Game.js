@@ -53,6 +53,15 @@ function Game() {
     }
   };
 
+  const normalizeInput = (input) => {
+    // Replace human-readable symbols with Python-readable symbols
+    return input
+      .replace(/\^/g, '**')  // Replace ^ with ** for exponentiation
+      .replace(/(\d+)x/g, '$1*x')  // Add * between coefficient and x (e.g., 5x -> 5*x)
+      .replace(/x(\d+)/g, 'x*$1')  // Add * between x and coefficient (e.g., x5 -> x*5)
+      .replace(/\s+/g, '');  // Remove any whitespace
+  };
+
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
@@ -61,8 +70,10 @@ function Game() {
     e.preventDefault();
     if (!userInput) return;
 
+    const normalizedInput = normalizeInput(userInput);
+
     try {
-      const result = await callBackend(selectedRules, userInput, problem.derivative || problem.result);
+      const result = await callBackend(selectedRules, normalizedInput, problem.derivative || problem.result);
       if (result.status === "incorrect") {
         setOutput(`Incorrect! ${result.message}`);
       } else {
