@@ -20,7 +20,7 @@ const developers = [
 function About() {
   return (
     <div className="about-container">
-      <Link to="/" className="back-to-home">
+      <Link to="/" className="nav-button">
         Back to Home
       </Link>
       <h2>About DerivaDash</h2>

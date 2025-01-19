@@ -1,55 +1,76 @@
-.about-container {
-    max-width: 800px;
-    margin: 2rem auto;
+:root {
+    --primary: #4f46e5;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-700: #374151;
+    --gray-900: #111827;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, var(--gray-100) 0%, white 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gray-900);
     padding: 2rem;
+  }
+  
+  .container {
     background: white;
+    padding: 2.5rem;
     border-radius: 1rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    overflow-y: auto;
-    max-height: calc(100vh - 4rem);
+    max-width: 64rem;
+    width: 90%;
   }
   
-  .about-description {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: var(--gray-700);
-    margin-bottom: 2rem;
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--primary), #818cf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
-  .developers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+  .title-link {
+    text-decoration: none;
+    color: inherit;
   }
   
-  .developer-card {
-    background: var(--gray-100);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  .title-link:hover {
+    text-decoration: none;
   }
   
-  .developer-role {
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  .developer-education {
-    font-style: italic;
-    margin-bottom: 0.5rem;
-  }
-  
-  .developer-bio {
+  .nav-button {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.25rem;
     font-size: 0.9rem;
-    color: var(--gray-700);
+    transition: background-color 0.2s ease-in-out;
+    margin-right: 0.5rem;
+  }
+  
+  .nav-button:hover {
+    background-color: #4338ca;
   }
   
   @media (max-width: 768px) {
-    .about-container {
+    .container {
       padding: 1.5rem;
-      margin: 1rem;
-      max-height: calc(100vh - 2rem);
     }
   }
   
