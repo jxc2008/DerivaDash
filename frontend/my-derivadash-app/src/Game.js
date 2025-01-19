@@ -55,11 +55,16 @@ function Game() {
 
   const normalizeInput = (input) => {
     // Replace human-readable symbols with Python-readable symbols
-    return input
+    let normalized = input
       .replace(/\^/g, '**')  // Replace ^ with ** for exponentiation
-      .replace(/(\d+)x/g, '$1*x')  // Add * between coefficient and x (e.g., 5x -> 5*x)
-      .replace(/x(\d+)/g, 'x*$1')  // Add * between x and coefficient (e.g., x5 -> x*5)
+      .replace(/(\d+)([a-zA-Z])/g, '$1*$2')  // Add * between coefficient and variable (e.g., 5x -> 5*x)
+      .replace(/([a-zA-Z])(\d+)/g, '$1*$2')  // Add * between variable and coefficient (e.g., x5 -> x*5)
       .replace(/\s+/g, '');  // Remove any whitespace
+
+    // Handle cases like "x^2" becoming "x**2" and "5x^2" becoming "5*x**2"
+    normalized = normalized.replace(/(\d+)\*([a-zA-Z])\*\*(\d+)/g, '$1*$2**$3');
+
+    return normalized;
   };
 
   const handleInputChange = (e) => {
