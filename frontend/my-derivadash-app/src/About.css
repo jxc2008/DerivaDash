@@ -5,6 +5,8 @@
     background: white;
     border-radius: 1rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    overflow-y: auto;
+    max-height: calc(100vh - 4rem);
   }
   
   .about-description {
@@ -33,6 +35,11 @@
     margin-bottom: 0.5rem;
   }
   
+  .developer-education {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  
   .developer-bio {
     font-size: 0.9rem;
     color: var(--gray-700);
@@ -41,6 +48,8 @@
   @media (max-width: 768px) {
     .about-container {
       padding: 1.5rem;
+      margin: 1rem;
+      max-height: calc(100vh - 2rem);
     }
   }
   

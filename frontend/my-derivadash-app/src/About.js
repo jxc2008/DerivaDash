@@ -5,11 +5,13 @@ const developers = [
   {
     name: "Joseph Cheng",
     role: "Lead Developer",
+    education: "Computer Science and Mathematics Student at New York University",
     bio: "Joseph is passionate about mathematics and web development. He specializes in creating interactive educational tools.",
   },
   {
     name: "Himesh Nasaka",
     role: "UI/UX Designer",
+    education: "Electrical Engineering Student at University of Illinois Urbana-Champaign",
     bio: "Himesh has a keen eye for design and user experience. He ensures that DerivaDash is both functional and visually appealing.",
   },
 ]
@@ -28,6 +30,7 @@ function About() {
           <div key={index} className="developer-card">
             <h4>{dev.name}</h4>
             <p className="developer-role">{dev.role}</p>
+            <p className="developer-education">{dev.education}</p>
             <p className="developer-bio">{dev.bio}</p>
           </div>
         ))}
