@@ -19,7 +19,7 @@ def random_problem():
 
     # Separate derivative and integral rules
     derivative_rules = [rule for rule in selected_rules if rule in ["constant", "power", "product", "quotient", "chain"]]
-    integral_rules = [rule for rule in selected_rules if rule in ["constant", "linear", "quadratic", "cubic", "u_substitution", "integration_by_parts"]]
+    integral_rules = [rule for rule in selected_rules if rule in ["integer", "linear", "quadratic", "cubic", "u_substitution", "integration_by_parts"]]
 
     # Randomly choose between derivative and integral (if both are selected)
     if derivative_rules and integral_rules:
