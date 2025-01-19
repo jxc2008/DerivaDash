@@ -108,7 +108,7 @@ async function callBackend(rules, input, answer) {
     user_input: input,
     correct_answer: answer,
   };
-  const response = await axios.post('http://localhost:5000/random_problem', payload);
+  const response = await axios.post('https://derivadash.onrender.com/random_problem', payload);
   return response.data;
 }
 
