@@ -2,37 +2,95 @@
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   }
   
   .learn-container h2 {
     color: var(--primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+  }
+  
+  .learn-section {
+    margin-bottom: 3rem;
+  }
+  
+  .learn-section h3 {
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .learn-intro {
+    color: var(--gray-700);
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 1.5rem;
   }
   
-  .learn-container h3 {
+  .rule-card {
+    background: var(--gray-100);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rule-card h4 {
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .rule-card ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .rule-card li {
+    margin-bottom: 1.5rem;
     color: var(--gray-700);
-    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .rule-card li strong {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  
+  .example {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 0.25rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--gray-900);
+  }
+  
+  .practice-prompt {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .practice-prompt p {
+    color: var(--gray-700);
     margin-bottom: 1rem;
   }
   
-  .learn-container p {
-    color: var(--gray-700);
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  .back-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease-in-out;
   }
   
-  .learn-container ul {
-    list-style-type: disc;
-    padding-left: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .learn-container li {
-    color: var(--gray-700);
-    margin-bottom: 0.5rem;
+  .back-link:hover {
+    background-color: #4338ca;
   }
   
   

@@ -139,9 +139,12 @@ function Home() {
         </button>
       </div>
 
-      <div className="about-link-container">
-        <Link to="/about" className="about-link">
-          About DerivaDash
+      <div className="navigation-buttons">
+        <Link to="/learn" className="nav-button">
+          Learn
+        </Link>
+        <Link to="/about" className="nav-button">
+          About
         </Link>
       </div>
     </div>

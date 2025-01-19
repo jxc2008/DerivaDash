@@ -20,9 +20,6 @@ const developers = [
 function About() {
   return (
     <div className="about-container">
-      <Link to="/" className="nav-button">
-        Back to Home
-      </Link>
       <h2>About DerivaDash</h2>
       <p className="about-description">
         DerivaDash is an interactive platform designed to help students master calculus through quick-fire practice. Our
@@ -39,6 +36,11 @@ function About() {
             {dev.bio && <p className="developer-bio">{dev.bio}</p>}
           </div>
         ))}
+      </div>
+      <div className="back-link-container">
+        <Link to="/" className="back-link">
+          Back to Home
+        </Link>
       </div>
     </div>
   )

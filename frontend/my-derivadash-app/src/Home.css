@@ -139,6 +139,28 @@
   background-color: #4338ca;
 }
 
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.nav-button {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.nav-button:hover {
+  background-color: #4338ca;
+}
+
 @media (max-width: 768px) {
   .options-container {
     grid-template-columns: 1fr;
