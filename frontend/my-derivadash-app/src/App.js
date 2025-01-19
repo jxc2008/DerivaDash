@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import Game from "./Game"
 import Home from "./Home"
 import About from "./About"
@@ -9,7 +9,9 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <h1>DerivaDash</h1>
+        <Link to="/" className="title-link">
+          <h1>DerivaDash</h1>
+        </Link>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/game" element={<Game />} />
