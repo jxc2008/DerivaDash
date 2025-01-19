@@ -68,6 +68,36 @@
     margin-top: 2rem;
   }
   
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--gray-200);
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .social-buttons a:hover {
+    background-color: var(--gray-300);
+  }
+  
+  .dark .social-buttons a {
+    background-color: var(--gray-700);
+  }
+  
+  .dark .social-buttons a:hover {
+    background-color: var(--gray-600);
+  }
+  
   @media (max-width: 768px) {
     .developers-grid {
       grid-template-columns: 1fr;

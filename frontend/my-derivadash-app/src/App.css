@@ -1,5 +1,6 @@
 :root {
   --primary: #4f46e5;
+  --primary-dark: #ff4444;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
@@ -55,5 +56,63 @@ h1 {
   .container {
     padding: 1.5rem;
   }
+}
+
+/* Dark mode styles */
+.dark {
+  background: #1a1a1a;
+  color: white;
+}
+
+.dark .container {
+  background: #2a2a2a;
+}
+
+.dark h1 {
+  background: linear-gradient(to right, var(--primary-dark), #ff8888);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.dark .nav-button,
+.dark .about-link,
+.dark button[type="submit"],
+.dark .back-link {
+  background-color: var(--primary-dark);
+  color: white;
+}
+
+.dark .nav-button:hover,
+.dark .about-link:hover,
+.dark button[type="submit"]:hover,
+.dark .back-link:hover {
+  background-color: #cc3333;
+}
+
+.dark .option-group,
+.dark .developer-card,
+.dark .rule-card {
+  background: #3a3a3a;
+}
+
+.dark .checkbox-item label,
+.dark .developer-bio,
+.dark .rule-card li {
+  color: #e0e0e0;
+}
+
+.dark select {
+  background-color: #3a3a3a;
+  color: white;
+  border-color: #555;
+}
+
+.dark input[type="checkbox"] {
+  border-color: #555;
+}
+
+.dark input[type="checkbox"]:checked {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
 }
 
