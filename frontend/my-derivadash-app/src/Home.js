@@ -2,8 +2,10 @@ import React, { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import "./App.css"
 import "./Home.css"
+import { useDarkMode } from "./contexts/DarkModeContext"
 
 function Home() {
+  const { darkMode } = useDarkMode()
   const navigate = useNavigate()
   const derivativeRules = ["constant", "power", "product", "quotient", "chain"]
   const integralRules = ["integer", "linear", "quadratic", "cubic", "u_substitution", "integration_by_parts"]
@@ -77,7 +79,7 @@ function Home() {
   }
 
   return (
-    <div className="home-container">
+    <div className={`home-container ${darkMode ? "dark" : ""}`}>
       <p className="description">
         Master calculus through quick-fire practice! Solve derivatives and integrals against the clock to build speed
         and confidence.

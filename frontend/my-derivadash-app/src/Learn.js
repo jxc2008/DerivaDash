@@ -1,10 +1,13 @@
 import React from "react"
 import "./Learn.css"
 import { Link } from "react-router-dom"
+import { useDarkMode } from "./contexts/DarkModeContext"
 
 function Learn() {
+  const { darkMode } = useDarkMode()
+
   return (
-    <div className="learn-container">
+    <div className={`learn-container ${darkMode ? "dark" : ""}`}>
       <h2>How to Solve Derivatives and Integrals</h2>
 
       <section className="learn-section">
