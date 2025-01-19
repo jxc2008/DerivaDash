@@ -13,7 +13,7 @@ function Home() {
     'chain',
   ];
   const integralRules = [
-    'constant',
+    'integer',
     'linear',
     'quadratic',
     'cubic',
@@ -32,7 +32,7 @@ function Home() {
       chain: false,
     },
     integrals: {
-      constant: false,
+      integer: false,
       linear: false,
       quadratic: false,
       cubic: false,

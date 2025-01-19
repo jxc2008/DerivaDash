@@ -100,7 +100,7 @@ class Integral:
         rule = random.choice(selected_rules)
 
         # Generate a random integral problem based on the selected rule
-        if rule == "constant":
+        if rule == "integer":
             problem = self.constant_integral()
         elif rule == "linear":
             problem = self.linear_integral()
