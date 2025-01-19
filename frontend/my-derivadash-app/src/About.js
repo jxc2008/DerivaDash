@@ -38,7 +38,7 @@ function About() {
         ))}
       </div>
       <div className="back-link-container">
-        <Link to="/" className="back-link">
+        <Link to="/" className="nav-button">
           Back to Home
         </Link>
       </div>
