@@ -11,18 +11,23 @@ import { Moon, Sun } from "lucide-react"
 function DarkModeToggle() {
   const { darkMode, toggleDarkMode } = useDarkMode()
   return (
-    <button
-      onClick={toggleDarkMode}
-      className="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800"
-      aria-label="Toggle dark mode"
-    >
-      {darkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+    <button onClick={toggleDarkMode} className="dark-mode-toggle" aria-label="Toggle dark mode">
+      {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </button>
   )
 }
 
 function AppContent() {
   const { darkMode } = useDarkMode()
+
+  React.useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark")
+    } else {
+      document.body.classList.remove("dark")
+    }
+  }, [darkMode])
+
   return (
     <div className={`container ${darkMode ? "dark" : ""}`}>
       <Link to="/" className="title-link">
