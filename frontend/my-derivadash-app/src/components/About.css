@@ -1,111 +1,131 @@
 .about-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-  }
-  
-  .about-container h2 {
-    color: var(--primary);
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    text-align: center;
-  }
-  
-  .about-description {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: var(--gray-700);
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .about-container h3 {
-    color: var(--gray-900);
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-  }
-  
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.about-container h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--gray-700);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about-container h3 {
+  color: var(--gray-900);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.developers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.developer-card {
+  background: var(--gray-100);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.developer-card h4 {
+  color: var(--gray-900);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.developer-role {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.developer-education {
+  font-style: italic;
+  color: var(--gray-700);
+  margin-bottom: 1rem;
+}
+
+.developer-bio {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+.back-link-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--gray-200);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.social-buttons a:hover {
+  background-color: var(--gray-300);
+}
+
+/* Dark mode styles */
+.dark .about-container h2,
+.dark .developer-role {
+  color: var(--primary-dark);
+}
+
+.dark .about-container h3,
+.dark .developer-card h4 {
+  color: white;
+}
+
+.dark .about-description,
+.dark .developer-education,
+.dark .developer-bio {
+  color: #e0e0e0;
+}
+
+.dark .developer-card {
+  background: #3a3a3a;
+}
+
+.dark .social-buttons a {
+  background-color: #4a4a4a;
+}
+
+.dark .social-buttons a:hover {
+  background-color: #5a5a5a;
+}
+
+@media (max-width: 768px) {
   .developers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: 1fr;
   }
-  
-  .developer-card {
-    background: var(--gray-100);
+
+  .about-container {
     padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
-  
-  .developer-card h4 {
-    color: var(--gray-900);
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .developer-role {
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  .developer-education {
-    font-style: italic;
-    color: var(--gray-700);
-    margin-bottom: 1rem;
-  }
-  
-  .developer-bio {
-    font-size: 0.9rem;
-    color: var(--gray-700);
-    line-height: 1.6;
-  }
-  
-  .back-link-container {
-    text-align: center;
-    margin-top: 2rem;
-  }
-  
-  .social-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .social-buttons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--gray-200);
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .social-buttons a:hover {
-    background-color: var(--gray-300);
-  }
-  
-  .dark .social-buttons a {
-    background-color: var(--gray-700);
-  }
-  
-  .dark .social-buttons a:hover {
-    background-color: var(--gray-600);
-  }
-  
-  @media (max-width: 768px) {
-    .developers-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .about-container {
-      padding: 1.5rem;
-    }
-  }
-  
-  
+}
+

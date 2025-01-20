@@ -1,5 +1,99 @@
-/* ... (previous styles remain the same) ... */
+.learn-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
 
+.learn-container h2 {
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.learn-section {
+  margin-bottom: 3rem;
+}
+
+.learn-section h3 {
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.learn-intro {
+  color: var(--gray-700);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.rule-card {
+  background: var(--gray-100);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rule-card h4 {
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.rule-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rule-card li {
+  margin-bottom: 1.5rem;
+  color: var(--gray-700);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.rule-card li strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.example {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 0.25rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--gray-900);
+}
+
+.practice-prompt {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.practice-prompt p {
+  color: var(--gray-700);
+  margin-bottom: 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.back-link:hover {
+  background-color: #4338ca;
+}
+
+/* Dark mode styles */
 .dark .learn-container h2,
 .dark .learn-section h3,
 .dark .rule-card h4 {
@@ -7,7 +101,8 @@
 }
 
 .dark .learn-intro,
-.dark .rule-card li {
+.dark .rule-card li,
+.dark .practice-prompt p {
   color: white;
 }
 
@@ -16,11 +111,19 @@
   color: white;
 }
 
+.dark .rule-card {
+  background: #3a3a3a;
+}
+
 .dark .rule-card li strong {
   color: var(--primary-dark);
 }
 
-.dark .practice-prompt p {
-  color: #e0e0e0;
+.dark .back-link {
+  background-color: var(--primary-dark);
+}
+
+.dark .back-link:hover {
+  background-color: #cc3333;
 }
 
