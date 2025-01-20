@@ -67,7 +67,7 @@ h1 {
   text-decoration: none;
 }
 
-/* Dark mode overrides - Updated for better visibility */
+/* Dark mode overrides */
 .dark {
   color: white;
 }
@@ -131,7 +131,6 @@ h1 {
   background: #5a5a5a;
 }
 
-/* Update all primary colored elements to use red in dark mode */
 .dark .developer-role,
 .dark .rule-card li strong,
 .dark .learn-section h2,
@@ -184,4 +183,3 @@ h1 {
     padding: 1.5rem;
   }
 }
-
