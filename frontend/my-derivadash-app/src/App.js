@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Game from "./Game";
-import Home from "./Home";
-import About from "./About";
-import Learn from "./Learn";
+import Game from "./components/Game";
+import Home from "./components/Home";
+import About from "./components/About";
+import Learn from "./components/Learn";
 import "./App.css";
 import { DarkModeProvider, useDarkMode } from "./contexts/DarkModeContext";
 import { Moon, Sun } from "lucide-react";
