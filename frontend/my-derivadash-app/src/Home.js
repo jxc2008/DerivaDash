@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import "./App.css"
 import "./Home.css"
-import { useDarkMode } from "./contexts/DarkModeContext"
+import { useDarkMode } from "../contexts/DarkModeContext"
 
 function Home() {
   const { darkMode } = useDarkMode()

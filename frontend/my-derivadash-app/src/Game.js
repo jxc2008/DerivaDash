@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { useLocation, Link } from "react-router-dom"
 import "./Game.css"
-import { useDarkMode } from "./contexts/DarkModeContext"
+import { useDarkMode } from "../contexts/DarkModeContext"
 
 function Game() {
   const { darkMode } = useDarkMode()

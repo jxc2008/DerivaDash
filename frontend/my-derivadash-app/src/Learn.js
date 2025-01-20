@@ -1,7 +1,7 @@
 import React from "react"
 import "./Learn.css"
 import { Link } from "react-router-dom"
-import { useDarkMode } from "./contexts/DarkModeContext"
+import { useDarkMode } from "../contexts/DarkModeContext"
 
 function Learn() {
   const { darkMode } = useDarkMode()
