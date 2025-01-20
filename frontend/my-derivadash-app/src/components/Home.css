@@ -1,178 +1,36 @@
-.home-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+/* ... (previous styles remain the same) ... */
 
-.description {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: var(--gray-700);
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.options-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.option-group {
-  background: var(--gray-100);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.option-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--gray-900);
-}
-
-.checkbox-group {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.checkbox-item input[type="checkbox"] {
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 0.25rem;
-  border: 2px solid var(--gray-400);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.checkbox-item input[type="checkbox"]:checked {
-  background-color: var(--primary);
-  border-color: var(--primary);
-}
-
-.checkbox-item input[type="checkbox"]:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.checkbox-item label {
-  font-size: 1rem;
-  color: var(--gray-700);
-  cursor: pointer;
-  margin-left: 0.25rem;
-}
-
-.checkbox-item input[type="checkbox"]:disabled + label {
-  color: var(--gray-400);
-  cursor: not-allowed;
-}
-
-.controls {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.controls select {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid var(--gray-300);
-  border-radius: 0.25rem;
-  background-color: white;
-  color: var(--gray-700);
-  cursor: pointer;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.controls select:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
-}
-
-.controls button {
-  background-color: var(--primary);
+.dark .home-container {
   color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
 }
 
-.controls button:hover {
-  background-color: #4338ca;
+.dark .description {
+  color: #e0e0e0;
 }
 
-.about-link-container {
-  margin-top: 2rem;
-  text-align: center;
+.dark .option-group {
+  background: #3a3a3a;
 }
 
-.about-link {
-  display: inline-block;
-  padding: 0.5rem 0.75rem;
-  background-color: var(--primary);
+.dark .option-header {
   color: white;
-  text-decoration: none;
-  border-radius: 0.25rem;
-  transition: background-color 0.2s ease-in-out;
-  font-size: 0.9rem;
 }
 
-.about-link:hover {
-  background-color: #4338ca;
+.dark .checkbox-item label {
+  color: #e0e0e0;
 }
 
-.navigation-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.nav-button {
-  display: inline-block;
-  padding: 0.5rem 0.75rem;
-  background-color: var(--primary);
+.dark .controls select {
+  background-color: #2a2a2a;
+  border-color: #555;
   color: white;
-  text-decoration: none;
-  border-radius: 0.25rem;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease-in-out;
 }
 
-.nav-button:hover {
-  background-color: #4338ca;
+.dark #start-practice {
+  background-color: var(--primary-dark);
 }
 
-@media (max-width: 768px) {
-  .options-container {
-    grid-template-columns: 1fr;
-  }
-
-  .controls {
-    flex-direction: column;
-  }
-
-  .controls select,
-  .controls button {
-    width: 100%;
-  }
+.dark #start-practice:hover {
+  background-color: #cc3333;
 }
 

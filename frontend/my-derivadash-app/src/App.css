@@ -67,15 +67,34 @@ h1 {
   text-decoration: none;
 }
 
-/* Dark mode overrides */
+/* Dark mode overrides - Updated for better visibility */
 .dark {
+  color: white;
+}
+
+.dark h2,
+.dark h3,
+.dark h4,
+.dark p,
+.dark label,
+.dark .checkbox-item label,
+.dark .option-header,
+.dark .description,
+.dark .learn-intro,
+.dark .example,
+.dark #output,
+.dark .score-display,
+.dark .developer-education,
+.dark .developer-bio,
+.dark .practice-prompt p {
   color: white;
 }
 
 .dark .nav-button,
 .dark .about-link,
 .dark button[type="submit"],
-.dark .back-link {
+.dark .back-link,
+.dark #start-practice {
   background-color: var(--primary-dark);
   color: white;
 }
@@ -83,24 +102,16 @@ h1 {
 .dark .nav-button:hover,
 .dark .about-link:hover,
 .dark button[type="submit"]:hover,
-.dark .back-link:hover {
+.dark .back-link:hover,
+.dark #start-practice:hover {
   background-color: #cc3333;
-}
-
-.dark .description,
-.dark .developer-bio,
-.dark .learn-intro,
-.dark .practice-prompt p,
-.dark label,
-.dark select,
-.dark input {
-  color: white;
 }
 
 .dark select,
 .dark input {
   background-color: #3a3a3a;
   border-color: #555;
+  color: white;
 }
 
 .dark .option-group,
@@ -108,6 +119,7 @@ h1 {
 .dark .rule-card,
 .dark .problem-box {
   background: #3a3a3a;
+  color: white;
 }
 
 .dark .back-button {
@@ -117,6 +129,24 @@ h1 {
 
 .dark .back-button:hover {
   background: #5a5a5a;
+}
+
+/* Update all primary colored elements to use red in dark mode */
+.dark .developer-role,
+.dark .rule-card li strong,
+.dark .learn-section h2,
+.dark .score-display {
+  color: var(--primary-dark);
+}
+
+.dark input[type="checkbox"]:checked {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.dark .controls select:focus {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.1);
 }
 
 .dark-mode-toggle {
