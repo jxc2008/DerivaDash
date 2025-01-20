@@ -94,6 +94,10 @@
 }
 
 /* Dark mode styles */
+.dark .learn-container {
+  color: #e0e0e0;
+}
+
 .dark .learn-container h2,
 .dark .learn-section h3,
 .dark .rule-card h4 {
@@ -103,16 +107,18 @@
 .dark .learn-intro,
 .dark .rule-card li,
 .dark .practice-prompt p {
-  color: white;
-}
-
-.dark .example {
-  background: #2a2a2a;
-  color: white;
+  color: #e0e0e0;
 }
 
 .dark .rule-card {
-  background: #3a3a3a;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+.dark .example {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  color: #e0e0e0;
 }
 
 .dark .rule-card li strong {
