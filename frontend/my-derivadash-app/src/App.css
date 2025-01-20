@@ -17,22 +17,26 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--gray-100) 0%, white 100%);
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
-  display: flex;
+  font-family: system-ui, -apple-system, sans-serif;
+  /*background: linear-gradient(135deg, var(--gray-100) 0%, white 100%); */
+  /*display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   color: var(--gray-900);
-  padding: 2rem;
+  /*padding: 2rem; */
 }
 
 .container {
-  background: white;
+  max-width: 64rem;
+  width: 100%;
+  margin: 0 auto;
+  /*background: white;
   padding: 2.5rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  max-width: 64rem;
-  width: 90%;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); */
 }
 
 h1 {
@@ -46,26 +50,38 @@ h1 {
 
 .title-link {
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .title-link:hover {
   text-decoration: none;
 }
 
+.title-link img {
+  width: 2rem;
+  height: 2rem;
+  filter: invert(1);
+}
+
 @media (max-width: 768px) {
-  .container {
+  /*.container {
     padding: 1.5rem;
-  }
+  }*/
 }
 
 /* Dark mode styles */
 .dark {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   background: #1a1a1a;
   color: white;
 }
 
+.dark body,
 .dark .container {
-  background: #2a2a2a;
+  background-color: #1a1a1a;
+  color: white;
 }
 
 .dark h1 {
@@ -114,5 +130,22 @@ h1 {
 .dark input[type="checkbox"]:checked {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
+}
+
+.dark .title-link img {
+  filter: invert(1);
+}
+
+button {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.dark button {
+  background-color: #3a3a3a;
+  color: white;
+}
+
+.dark button:hover {
+  background-color: #4a4a4a;
 }
 
