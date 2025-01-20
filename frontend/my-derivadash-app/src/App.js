@@ -1,15 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Game from "./components/Game";
-import Home from "./components/Home";
-import About from "./components/About";
-import Learn from "./components/Learn";
-import "./App.css";
-import { DarkModeProvider, useDarkMode } from "./contexts/DarkModeContext";
-import { Moon, Sun } from "lucide-react";
+import React from "react"
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
+import Game from "./Game"
+import Home from "./Home"
+import About from "./About"
+import Learn from "./Learn"
+import "./App.css"
+import { DarkModeProvider, useDarkMode } from "./contexts/DarkModeContext"
+import { Moon, Sun } from "lucide-react"
 
 function DarkModeToggle() {
-  const { darkMode, toggleDarkMode } = useDarkMode();
+  const { darkMode, toggleDarkMode } = useDarkMode()
   return (
     <button
       onClick={toggleDarkMode}
@@ -18,11 +18,11 @@ function DarkModeToggle() {
     >
       {darkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
     </button>
-  );
+  )
 }
 
 function AppContent() {
-  const { darkMode } = useDarkMode();
+  const { darkMode } = useDarkMode()
   return (
     <div className={`container ${darkMode ? "dark" : ""}`}>
       <Link to="/" className="title-link">
@@ -36,7 +36,7 @@ function AppContent() {
         <Route path="/learn" element={<Learn />} />
       </Routes>
     </div>
-  );
+  )
 }
 
 function App() {
@@ -46,7 +46,8 @@ function App() {
         <AppContent />
       </Router>
     </DarkModeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
+
