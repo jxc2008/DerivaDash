@@ -1,227 +1,133 @@
-:root {
-  --primary: #4f46e5;
-  --primary-dark: #ff4444;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-700: #374151;
-  --gray-900: #111827;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--gray-900);
+.about-container {
+  max-width: 800px;
+  margin: 2rem auto;
   padding: 2rem;
 }
 
-body.dark {
-  background: #1a1a1a;
-  color: white;
-}
-
-.container {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  max-width: 64rem;
-  width: 90%;
-}
-
-.dark .container {
-  background: #2a2a2a;
-  color: white;
-}
-
-h1 {
+.about-container h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
   font-size: 2rem;
+  text-align: center;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--gray-700);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about-container h3 {
+  color: var(--gray-900);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.developers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.developer-card {
+  background: var(--gray-100);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.developer-card h4 {
+  color: var(--gray-900);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.developer-role {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.developer-education {
+  font-style: italic;
+  color: var(--gray-700);
   margin-bottom: 1rem;
-  background: linear-gradient(to right, var(--primary), #818cf8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
-.dark h1 {
-  background: linear-gradient(to right, var(--primary-dark), #ff8888);
-  -webkit-background-clip: text;
-  background-clip: text;
+.developer-bio {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.6;
 }
 
-.title-link {
-  text-decoration: none;
+.back-link-container {
+  text-align: center;
+  margin-top: 2rem;
 }
 
-.title-link:hover {
-  text-decoration: none;
-}
-
-/* Logo container */
-.logo-container {
+.social-buttons {
   display: flex;
-  align-items: center;
+  justify-content: center;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
-/* Logo image */
-.logo-image {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: var(--primary-dark);
+.social-buttons a {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--gray-200);
+  transition: background-color 0.2s ease-in-out;
 }
 
-/* Logo image in dark mode */
-.dark .logo-image {
-  background-color: var(--primary-dark);
+.social-buttons a:hover {
+  background-color: var(--gray-300);
 }
 
-/* Logo image hover effect */
-.logo-image:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-/* Logo text */
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--gray-900);
-}
-
-/* Logo text in dark mode */
-.dark .logo-text {
-  color: white;
-}
-
-/* Dark mode overrides - Updated for better visibility */
-.dark {
-  color: white;
-}
-
-.dark h2,
-.dark h3,
-.dark h4,
-.dark p,
-.dark label,
-.dark .checkbox-item label,
-.dark .option-header,
-.dark .description,
-.dark .learn-intro,
-.dark .example,
-.dark #output,
-.dark .score-display,
-.dark .developer-education,
-.dark .developer-bio,
-.dark .practice-prompt p {
-  color: white;
-}
-
-.dark .nav-button,
-.dark .about-link,
-.dark button[type="submit"],
-.dark .back-link,
-.dark #start-practice {
-  background-color: var(--primary-dark);
-  color: white;
-}
-
-.dark .nav-button:hover,
-.dark .about-link:hover,
-.dark button[type="submit"]:hover,
-.dark .back-link:hover,
-.dark #start-practice:hover {
-  background-color: #cc3333;
-}
-
-.dark select,
-.dark input {
-  background-color: #3a3a3a;
-  border-color: #555;
-  color: white;
-}
-
-.dark .option-group,
-.dark .developer-card,
-.dark .rule-card,
-.dark .problem-box {
-  background: #3a3a3a;
-  color: white;
-}
-
-.dark .back-button {
-  background: #4a4a4a;
-  color: white;
-}
-
-.dark .back-button:hover {
-  background: #5a5a5a;
-}
-
-/* Update all primary colored elements to use red in dark mode */
-.dark .developer-role,
-.dark .rule-card li strong,
-.dark .learn-section h2,
-.dark .score-display {
+/* Dark mode styles */
+.dark .about-container h2,
+.dark .developer-role {
   color: var(--primary-dark);
 }
 
-.dark input[type="checkbox"]:checked {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-}
-
-.dark .controls select:focus {
-  border-color: var(--primary-dark);
-  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.1);
-}
-
-.dark-mode-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 50;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
-  border: none;
-  background-color: #2a2a2a;
+.dark .about-container h3,
+.dark .developer-card h4 {
   color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
 }
 
-.dark-mode-toggle:hover {
+.dark .about-description,
+.dark .developer-education,
+.dark .developer-bio {
+  color: #e0e0e0;
+}
+
+.dark .developer-card {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+.dark .social-buttons a {
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+}
+
+.dark .social-buttons a:hover {
   background-color: #3a3a3a;
 }
 
-.dark .dark-mode-toggle {
-  background-color: #4a4a4a;
-}
-
-.dark .dark-mode-toggle:hover {
-  background-color: #5a5a5a;
-}
-
 @media (max-width: 768px) {
-  .container {
+  .developers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-container {
     padding: 1.5rem;
   }
 }
+
