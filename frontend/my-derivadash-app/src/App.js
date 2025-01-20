@@ -7,7 +7,6 @@ import Learn from "./components/Learn"
 import "./App.css"
 import { DarkModeProvider, useDarkMode } from "./contexts/DarkModeContext"
 import { Moon, Sun } from "lucide-react"
-import { Logo } from "./components/Logo"
 
 function DarkModeToggle() {
   const { darkMode, toggleDarkMode } = useDarkMode()
@@ -25,9 +24,9 @@ function DarkModeToggle() {
 function AppContent() {
   const { darkMode } = useDarkMode()
   return (
-    <div className={darkMode ? "dark" : ""}>
+    <div className={`app-wrapper ${darkMode ? "dark" : ""}`}>
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 h-full">
           <Link to="/" className="title-link">
             <h1>DerivaDash</h1>
           </Link>
